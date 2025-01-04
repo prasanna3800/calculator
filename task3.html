@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+    <style>
+        .container {
+            width: 290px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: black;
+        }
+
+        .calc-body {
+            width: 270px;
+            border: 10px double;
+        }
+
+        .calc-screen {
+            background-color: gainsboro;
+            height: 100px;
+            padding: 15px;
+        }
+
+        .calc-operation {
+            text-align: right;
+            font-size: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid white;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="color: white; padding-top: 20px; margin-top: 80px;">CALCULATOR</h1>
+        <div class="calc-body">
+            <div class="calc-screen">
+                <div class="calc-operation" id="operation"></div>
+                <div class="calc-typed" id="result"></div>
+            </div>
+            <div class="button-row">
+                <div class="button l" onclick="clearDisplay()"> C </div>
+                <div class="button" onclick="Display('(')"> ( </div>
+                <div class="button" onclick="Display(')')"> ) </div>
+                <div class="button l" onclick="Display('/')"> / </div>
+
+                <div class="button" onclick="Display('7')"> 7 </div>
+                <div class="button" onclick="Display('8')"> 8 </div>
+                <div class="button" onclick="Display('9')"> 9 </div>
+                <div class="button l" onclick="Display('*')"> x </div>
+
+                <div class="button" onclick="Display('4')"> 4 </div>
+                <div class="button" onclick="Display('5')"> 5 </div>
+                <div class="button" onclick="Display('6')"> 6 </div>
+                <div class="button l" onclick="Display('-')"> -</div>
+
+                <div class="button" onclick="Display('1')"> 1 </div>
+                <div class="button" onclick="Display('2')"> 2 </div>
+                <div class="button" onclick="Display('3')"> 3 </div>
+                <div class="button l" onclick="Display('+')"> + </div>
+
+                <div class="button" onclick="Display('.')"> . </div>
+                <div class="button" onclick="Display('0')"> 0 </div>
+                <div class="button l" onclick="Display('%')"> % </div>
+                <div class="button l" onclick="calculate()"> = </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function Display(value) {
+            document.getElementById("operation").innerText += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("operation").innerText = "";
+            document.getElementById("result").innerText = "";
+        }
+
+        function calculate() {
+            try {
+                var operation = document.getElementById("operation").innerText;
+                var result = eval(operation);
+                document.getElementById("result").innerText = result;
+            } catch (error) {
+                document.getElementById("result").innerText = "Error";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
